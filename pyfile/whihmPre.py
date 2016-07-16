@@ -5,7 +5,9 @@ import os
 import numpy as np
 mh_yes_list=glob.glob("/home/stream/whimh2/mh_yes/*.jpg")
 mh_not_list=glob.glob("/home/stream/whimh2/mh_not/*.jpg")
+#mh_not_list=mh_not_list[:100]
 human_not_list=glob.glob("/home/stream/whimh2/human_not/*.jpg")
+#human_not_list=human_not_list[:100]
 datarows=len(mh_yes_list)+len(mh_not_list)+len(human_not_list)
 frames = np.empty((datarows, 32,32, 3))
 frames2 = np.empty((datarows, 32,32, 3))
