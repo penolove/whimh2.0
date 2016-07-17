@@ -2,7 +2,10 @@ import glob
 import os
 import sys
 dirPath="/home/stream/whimh2/"
-imagePath = sys.argv[1]
+#imagePath = sys.argv[1]
+print "which dir are you going to fill? "
+print "[mh_yes ,mh_not ,human_not]"
+imagePath=raw_input()
 
 fileInD=glob.glob(dirPath+imagePath+"/*.jpg")
 renames2=[dirPath+imagePath+"/"+str(i)+'.jpg' for i in range(len(fileInD))]
