@@ -1,6 +1,11 @@
 # whimh2.0
-# you should install python 2.7 using anaconda
+we have consturcted a model to classify min-han/ not min-han /not human .
+using CNN implemented in cs231n model
+layers: hidden_dims=[64,128,256],hidden_dim=[1024,500] 
+get about ~90% accuracy
+the detail is in the whimh2_training.ipynb
 
+## you should install python 2.7 using anaconda
 ##Five stupid python functions:
 ###moveFile
 =========
