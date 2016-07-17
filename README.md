@@ -27,6 +27,7 @@ pytohn JPG2jpg.py
 ```
 
 ###faceDetect
+
 ####you need opencv on python
 https://omoshetech.com/how-to-install-anaconda-and-opencv/
 ####and gtk2-devel
@@ -34,7 +35,8 @@ sudo yum groupinstall "Development Tools"
 sudo yum install pkgconfig  
 sudo yum install cmake  
 sudo yum install gtk2-devel  
-=========
+
+
 extract faces of file in unclass, you need to provide
 which is min-han ,which are not human face
 using comma to split numbers
