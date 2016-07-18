@@ -142,7 +142,9 @@ class Solver(object):
     self.loss_history = []
     self.train_acc_history = []
     self.val_acc_history = []
-
+    self.val_min_history = []
+    self.val_mnt_history = []
+    self.val_nhn_history = []
     # Make a deep copy of the optim_config for each parameter
     self.optim_configs = {}
     for p in self.model.params:
@@ -214,6 +216,35 @@ class Solver(object):
 
     return acc
 
+  def check_minhan_accuracy(self, X, y,clas=0, num_samples=None, batch_size=100):
+    """
+	a function that returns each class accuracy
+    """
+    idx=np.where(y==clas)[0]
+    #print idx
+    # Maybe subsample the data
+    N = X[idx].shape[0]
+    X = X[idx]
+    y = y[idx]
+    if num_samples is not None and N > num_samples:
+      mask = np.random.choice(N, num_samples)
+      N = num_samples
+      X = X[mask]
+      y = y[mask]
+
+    # Compute predictions in batches
+    num_batches = N / batch_size
+    if N % batch_size != 0:
+      num_batches += 1
+    y_pred = []
+    for i in xrange(num_batches):
+      start = i * batch_size
+      end = (i + 1) * batch_size
+      scores = self.model.loss(X[start:end])
+      y_pred.append(np.argmax(scores, axis=1))
+    y_pred = np.hstack(y_pred)
+    acc = np.mean(y_pred == clas)
+    return acc
 
   def train(self):
     """
@@ -247,12 +278,17 @@ class Solver(object):
         train_acc = self.check_accuracy(self.X_train, self.y_train,
                                         num_samples=1000)
         val_acc = self.check_accuracy(self.X_val, self.y_val)
+	min_acc = self.check_minhan_accuracy(self.X_val, self.y_val )
+	mnt_acc = self.check_minhan_accuracy(self.X_val, self.y_val,clas=1)
+	nhn_acc = self.check_minhan_accuracy(self.X_val, self.y_val,clas=2)
         self.train_acc_history.append(train_acc)
         self.val_acc_history.append(val_acc)
-
+        self.val_min_history.append(min_acc)
+        self.val_mnt_history.append(mnt_acc)
+        self.val_nhn_history.append(nhn_acc)
         if self.verbose:
-          print '(Epoch %d / %d) train acc: %f; val_acc: %f' % (
-                 self.epoch, self.num_epochs, train_acc, val_acc)
+          print '(Epoch %d / %d) train acc: %f; val_acc: %f; min_acc: %f; mnt_acc: %f; nhn_acc: %f' % (
+                 self.epoch, self.num_epochs, train_acc, val_acc,min_acc,mnt_acc,nhn_acc)
 
         # Keep track of the best model
         if val_acc > self.best_val_acc:
