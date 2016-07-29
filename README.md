@@ -1,4 +1,9 @@
 # whimh2.0
+need:
+anaconda 2.7
+opencv
+tensorflow
+
 we have consturcted a model to classify min-han/ not min-han /not human  
 using CNN implemented in cs231n model  
 layers: hidden_dims=[64,128,256],hidden_dim=[1024,500]   
@@ -53,3 +58,13 @@ it will be saved in outfile_x.npy ,outfile_y.npy
 ```
 pytohn whihmPre.py
 ```
+
+you need to download these three file to whimh2/ :
+
+1. vggface model [link](https://drive.google.com/open?id=0B0GW3-McRihWM0VsWkh1Q3JYTE0)
+2. pretensorWhimh [link](https://drive.google.com/open?id=0B0GW3-McRihWRllSLXN5UUZ1ek0)
+3. finetune.npy [link](https://drive.google.com/open?id=0B0GW3-McRihWSVhHZkJRcG5TU1U)
+
+jupyter-notebook
+
+
