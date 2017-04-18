@@ -85,12 +85,12 @@ a Fine_tune model attach after VGG
 
 you need to download these three file to whimh2/ :
 ### vggface.tfmodel: a pretrained vgg model for face classification (tensorfor)
-1. vggface model [link](https://drive.google.com/open?id=0B0GW3-McRihWM0VsWkh1Q3JYTE0)
+1. vggface model [link](https://drive.google.com/file/d/0BxRU7n3UdSpqNXZ4RlBEN2E0dzg/view?usp=sharing)
 ### pretensorWhimh.pb saves the layer which we attach to VGG, (not nessary)
-2. pretensorWhimh [link](https://drive.google.com/open?id=0B0GW3-McRihWRllSLXN5UUZ1ek0)
+2. pretensorWhimh [link](https://drive.google.com/file/d/0BxRU7n3UdSpqbGdVYzNpNzNDYXc/view?usp=sharing)
 
 ### since the VGG forward needs lot of memory, directly skip to Sec 2 need this file,(not nessary)
-3. finetune.npy [link](https://drive.google.com/open?id=0B0GW3-McRihWSVhHZkJRcG5TU1U)
+3. finetune.npy [link](https://drive.google.com/file/d/0BxRU7n3UdSpqNFI2LVRPN1VhQjA/view?usp=sharing)
 
 
 
